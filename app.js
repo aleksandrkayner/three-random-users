@@ -40,11 +40,10 @@ function removeUsers() {
     document.querySelector(`.user${index + 1}`).classList.remove("card");
   }
 }
-// links.addEventListener("click", function() {
-//   removeUsers();
-// });
+
 window.addEventListener("hashchange", function(ev) {
-  //removeUsers();
+  // removeUsers();
+
   getUsers();
   let index = location.hash.slice(1);
   index = parseInt(index);
@@ -62,6 +61,26 @@ window.addEventListener("hashchange", function(ev) {
       userSelector.classList.add("card");
     }
   }
+
+  if (index === 2) {
+    document.querySelector(`.user${index - 1}`).innerHTML = "";
+    document.querySelector(`.user${index}`).innerHTML = "";
+    document.querySelector(`.user${index - 1}`).classList.remove("card");
+    document.querySelector(`.user${index}`).classList.remove("card");
+  }
+  if (index === 1) {
+    document.querySelector(`.user${index + 2}`).innerHTML = "";
+    document.querySelector(`.user${index}`).innerHTML = "";
+    document.querySelector(`.user${index + 2}`).classList.remove("card");
+    document.querySelector(`.user${index}`).classList.remove("card");
+  }
+  if (index === 0) {
+    document.querySelector(`.user${index + 3}`).innerHTML = "";
+    document.querySelector(`.user${index + 2}`).innerHTML = "";
+    document.querySelector(`.user${index + 3}`).classList.remove("card");
+    document.querySelector(`.user${index + 2}`).classList.remove("card");
+  }
+
   document.querySelector(`.user${index + 1}`).innerHTML =
     dataThreeUsers[index].fullName +
     "<br>" +
